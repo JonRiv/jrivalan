@@ -19,20 +19,22 @@
 ..............,=?????,..........................................................
 .....................ALL RIGHTS RESERVED........Author:Jonathan Rivalan.......*/
 
-
-
-$(document).ready(function(){
-
-  function BubbleLauncherFR(){
+  function BubbleLauncher(){
 
       //Informations sur la scene
-    var wW = $(window).width();
-    var wH = $(window).height();
+
+    var wW = document.documentElement.clientWidth;
+    var wH = document.documentElement.clientHeight;
 
       //Création du canvas principal
-    var c0re = $('html');
-    c0re.prepend('<canvas id="canvas1" width="'+wW+'" height="'+wH+'"></canvas>');
-    var can = document.getElementById('canvas1');
+    var c0re = document.querySelector('html'),
+        c0reCanvas = document.createElement('canvas');
+
+    c0reCanvas.id = "canvas1";
+    c0reCanvas.width = wW;
+    c0reCanvas.height = wH;
+    c0re.insertBefore(c0reCanvas, c0re.firstChild);
+    var can = document.querySelector('#canvas1');
     var ctx = can.getContext('2d');
     
       //Création du canvas secondaire pour pre-rendering
@@ -69,19 +71,24 @@ $(document).ready(function(){
 
      var bCounter = {};
      bCounter.pinnedBubbles = 0,
-     cursor = $('.bubble_cursor'),
-     cursorTooltip = $('.pinned_bubbles'),
-     cursorBlur = $('img.bubble_blur');
+     cursor = document.querySelector('.bubble_cursor'),
+     cursorTooltip = document.querySelector('.pinned_bubbles'),
+     cursorBlur = document.querySelector('img.bubble_blur');
      ghostActive = 0,
      ghosts = '',
      currentCursorPos = [0,0],
      newCursorPos = 0,
      oddEven = 0;
 
+      document.addEventListener("mousemove", function(e){
+        mXPos = e.pageX;
+        mYPos = e.pageY;
+      })
+
     //Auto-initialise l'effet
     function launch(){
       counter = 0; //reset
-      cursor.hide(); //dissimule le curseur
+      cursor.style.display = "none"; //todo .hide class
     //Création des objets
       bulleZ = [];
       for (i=1;i<=bNum;i++) {
@@ -90,8 +97,13 @@ $(document).ready(function(){
     //Rendu des objets
       setTimeout(function(){
         if (bRender == "render"){
-          render();$("#rend").text("// rendu direct");}
-        else if (bRender == "prerender"){prerender();$("#rend").text("// pré-rendu");}
+          render();
+          document.querySelector('#rend').innerText = "// rendu direct";
+        }
+        else if (bRender == "prerender"){
+          prerender();
+          document.querySelector('#rend').innerText = "// pré-rendu";
+        }
         else {render();}
       },bDelay);
     };
@@ -130,13 +142,6 @@ $(document).ready(function(){
     setInterval(dispFPS,1000);
 
     function step(ctxt){
-
-      $(document).on('mousemove', function(e) {
-      mXPos = e.pageX;
-      mYPos = e.pageY;
-      //return mXPos;
-      //return mYPos;
-      });
         //to date, fastest clearing canvas way
       ctxt.clearRect(0, 0, wW, wH);
         //possible alternative, slowest
@@ -175,13 +180,13 @@ $(document).ready(function(){
                     b.pin = "yes";
                     bCounter.pinnedBubbles += 1;
                     if (bCounter.pinnedBubbles == 1){
-                    cursor.addClass('custcursor');
-                    $('#canvas1').addClass('custcursor');
+                      cursor.classList.add('custcursor');
+                      document.querySelector('#canvas1').classList.add('custcursor');
                     }
 
-                    cursorTooltip.addClass('shine');
+                    cursorTooltip.classList.add('shine');
                     setTimeout(function(){
-                      cursorTooltip.removeClass('shine');
+                      cursorTooltip.classList.remove('shine');
                     },200)
                     
                   }
@@ -198,8 +203,6 @@ $(document).ready(function(){
                   b.cFnum[2] += b.Step[2]*7;
                   b.cFnum[3] += b.Step[3]*7;
                   b.color = "("+b.cFnum[1]+","+b.cFnum[2]+","+b.cFnum[3]+")";
-
-
                 }
                   b.x = mX-b.size*0.2;
                   b.y = mY-b.size*0.2;
@@ -223,12 +226,12 @@ $(document).ready(function(){
                 if (b.pin !== "no"){
                   b.pin = "no";
                   bCounter.pinnedBubbles -= 1;
-                  cursorTooltip.addClass('unshine');
+                  cursorTooltip.classList.add('unshine');
                   setTimeout(function(){
-                    cursorTooltip.removeClass('unshine');
+                    cursorTooltip.classList.remove('unshine');
                   },200)
                   if (bCounter.pinnedBubbles == 0){
-                    $('canvas').removeClass('custcursor');
+                    document.querySelector('canvas').classList.remove('custcursor');
                   }
                 }
 
@@ -275,33 +278,29 @@ $(document).ready(function(){
       
       if (ghostActive == 0){
         ghostActive = 1;
-        var objGhost = blurobj.clone();
-        objGhost.addClass('ghosts').removeClass('shine');
+        var objGhost = blurobj.cloneNode();
+        objGhost.classList.add('ghosts');
+        objGhost.classList.remove('shine');
+        //todo removo 6 for configurable number
         for (var i = 1; i <= 6; i++) {
-          var newObj = objGhost.clone();
-          $(newObj).attr('data-opacityId',Math.round((0.6/i*0.9)*1000)/1000)
-                   .css('opacity',$(this).data('opacityId'));
-          obj.before(newObj);
+          var newObj = objGhost.cloneNode();
+          newObj.attributes["dataOpacityId"] = (Math.round((0.6/i*0.9)*1000))/1000;
+          obj.parentNode.insertBefore(newObj, obj);
         };
-
-        ghosts = $('.ghosts');
-        //ghostsTooltip = ghosts.find('p');
-        //ghosts.fadeIn().css('opacity','1');
+        ghosts = document.querySelectorAll('.ghosts');
       }
     })();
 
     function cursorHandle(){
       if (bCounter.pinnedBubbles !== 0){
-        cursor.fadeIn("fast");
-
-        ghosts.each(function(){
-          $(this).css("opacity",$(this).attr('data-opacityId'));
-        });
-
-        cursor.css('left',(mXPos-6)+'px');
-        cursor.css('top',mYPos-4+'px');
-        cursorTooltip.text(bCounter.pinnedBubbles);
-
+        cursor.style.display = "block";// todo .hide class
+        cursor.style.opacity = 1;
+        for (var i = 0; i < ghosts.length-1; i++) {
+          ghosts[i].style.opacity = ghosts[i].attributes.dataOpacityId;
+        }
+        cursor.style.left = mXPos-6+'px';
+        cursor.style.top = mYPos-4+'px';
+        cursorTooltip.innerText = ''+bCounter.pinnedBubbles+'';
         if (oddEven == 1 ){
           oddEven = 0;
           cursorMotionBlur(cursor, cursorBlur);
@@ -311,19 +310,19 @@ $(document).ready(function(){
         }
       }
       else {
-        if (cursor.css('display') !== 'none'){
-          cursor.css('left',(mXPos-5)+'px');
-          cursor.css('top',mYPos+'px');
-          cursor.fadeOut("fast");
-          ghosts.each(function(){
-            $(this).css('opacity','0');
-          })
+        if (cursor.style.display !== 'none'){
+          cursor.style.left = mXPos-5+'px';
+          cursor.style.top = mYPos+'px';
+          cursor.style.display = "none";
+          for (var i = 0; i < ghosts.length-1; i++) {
+            ghosts[i].style.opacity = 0;
+          }
         }
       }
     };
 
     function getCursorSpeed(obj){
-    newCursorPos = [parseInt(obj.css('left')),parseInt(obj.css('top'))];
+    newCursorPos = [parseInt(obj.style.left),parseInt(obj.style.top)];
     var cursorSpeed = [(newCursorPos[0]-currentCursorPos[0]),(newCursorPos[1]-currentCursorPos[1])];
      currentCursorPos = newCursorPos;
      return cursorSpeed;
@@ -331,14 +330,12 @@ $(document).ready(function(){
 
     function cursorMotionBlur(obj, blurobj){
       var speed = getCursorSpeed(obj);
-      var basePos = [parseInt(obj.css('left')),parseInt(obj.css('top'))];
-      //ghostsTooltip.text(bCounter.pinnedBubbles);
-      ghosts.each(function(index){
-        that = $(this);
-        that.css('left',basePos[0]+(speed[0]*(index*(index*index*0.1)-index*2))+'px');
-        that.css('top',basePos[1]+(speed[1]*(index*(index*index*0.1)-index*2))+'px');
-        basePos = [parseInt(that.css('left')),parseInt(that.css('top'))];
-      })
+      var basePos = [parseInt(obj.style.left),parseInt(obj.style.top)];
+      for (var i = 0; i < ghosts.length-1; i++) {
+        ghosts[i].style.left = basePos[0]+(speed[0]*(i*(i*i*0.1)-i*2))+'px';
+        ghosts[i].style.top = basePos[1]+(speed[1]*(i*(i*i*0.1)-i*2))+'px';
+        basePos = [parseInt(ghosts[i].style.left),parseInt(ghosts[i].style.top)];
+      }
     };
 
     function bullePopulate(num){
@@ -360,10 +357,8 @@ $(document).ready(function(){
       b.color = bColor[triRand];
       //Attribue une couleur spéciale à la deuxième bulle
       if (num == 2 | num == 4){b.color = SpecialColor;}
-      b.color2nd = b2ndColor[colRand];
       
-
-
+      b.color2nd = b2ndColor[colRand];
       b.ColStep = b.OColstep = b.color;
       b.ColDest = b.OColDest = b.color2nd;
 
@@ -439,47 +434,46 @@ $(document).ready(function(){
             };
     }());
 
+      //todo readd the relaunch button
       (function BubbleDemo(){
-        var but = $('.demo');
-        but.click(function(){
-          var wW = $(window).width();
-          var wH = $(window).height();
-          can = $("#canvas1");
+        var but = document.querySelector('.demo');
+        //but.click(function(){
+        but.addEventListener("click",function(){
+          var wW = document.documentElement.clientWidth;
+          var wH = document.documentElement.clientHeight;
+          can = document.querySelector("#canvas1");
           can.width = wW;
           can.height = wH;
-          cancelAnimationFrame(bAnim);
-          can.fadeToggle("slow").fadeToggle("slow");
           recounter += 1;
-          launch();
-          if (recounter <= 1) {}
+          if (recounter <= 1) {
+            cancelAnimationFrame(bAnim);
+            launch();
+          }
           else {
             recounter = 0;
-            fpsControl = $('#fps').html().split(".");
-            if (fpsControl[0] >= 600) { //en attendant que firefox remette cancelAnimationFrame.. version actuelle FF11 
-                                        //edit: corrigé dans la béta FF12
-              c0re.append('<div id="negPop" width="'+wW+'" height="'+wH+'"><p>Too many<br> fps!<br>:(</p></div>');
-            }
-            else {
-              var ErrScreen = '<div id="negPop" width="'+wW+'" height="'+wH+'"><p>Get a<br>life<br>!:)</p></div>';
-              c0re.append(ErrScreen);
-              Rideau = $('#negPop');
-              Rideau.click(function(){
-                  Rideau.remove();
-                  cancelAnimationFrame(bAnim);
-                  can.fadeToggle("slow").fadeToggle("fast");
-                  launch();
-                });
-            }
+              Rideau = document.createElement('div');
+
+              Rideau.innerHTML = '<p>Get a<br>life<br>!:)</p>';
+              Rideau.id = 'negPop';
+              Rideau.width = wW;
+              Rideau.width = wH;
+              c0re.appendChild(Rideau);
+
+              Rideau = document.querySelector('#negPop');
+              Rideau.addEventListener("click",function(){
+                Rideau.remove();
+                cancelAnimationFrame(bAnim);
+                launch();
+              });
           }
         });
       })();
   };
   //Execution après le chargement des images.
   window.onload = function() {
-  BubbleLauncherFR();
+    BubbleLauncher();
   }
   /*au click sur démos, on relance l'anim :)*/
-});
 
 
 
