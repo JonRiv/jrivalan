@@ -79,7 +79,7 @@
       document.addEventListener("mousemove", function(e){
         mXPos = e.pageX;
         mYPos = e.pageY;
-      })
+      });
 
     //Auto-initialise l'effet
     function launch(){
@@ -169,7 +169,7 @@
                     cursorTooltip.classList.add('shine');
                     setTimeout(function(){
                       cursorTooltip.classList.remove('shine');
-                    },200)
+                    },200);
                     
                   }
                   //si la bulle était déjà pinnée
@@ -211,7 +211,7 @@
                   cursorTooltip.classList.add('unshine');
                   setTimeout(function(){
                     cursorTooltip.classList.remove('unshine');
-                  },200)
+                  },200);
                   if (bCounter.pinnedBubbles == 0){
                     document.querySelector('canvas').classList.remove('custcursor');
                   }
@@ -385,7 +385,7 @@
 
     //dynamic random range
     function Rand0To(n){
-    return Math.floor(Math.random()*(n))
+      return Math.floor(Math.random()*(n));
     }
     function RandnTo(n,nbis){
       z = nbis+1;
@@ -430,5 +430,5 @@
   //Execution après le chargement des images.
   window.onload = function() {
     BubbleLauncher();
-  }
+  };
   /*au click sur démos, on relance l'anim :)*/
