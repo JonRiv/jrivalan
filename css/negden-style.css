@@ -74,7 +74,7 @@ td { vertical-align: top; }
 .............?????,.......????...???????........................................
 ............????:........=???,...??????.........................................
 ...........=???:........,????....~????,.........................................
-...........????.........????.....,????.EGDEN..2012....www.negden.com............
+...........????.........????.....,????.NEGDEN..2012....www.negden.com...........
 ...........????........????,......,,,...........................................
 ...........????+.....,????,.....................................................
 ...........,??????:+?????:................|| ASK BEFORE COPY ||.................
@@ -93,8 +93,8 @@ td { vertical-align: top; }
          url('../fonts/harlow-solid-let-plain1.0-webfont.svg#HarlowSolidLETPlain') format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
+
 .harlow {
   font-family: 'HarlowSolidLETPlain';
 
@@ -172,9 +172,9 @@ nav.top ul li:hover {float:left;width:31%;
   transition:width 0.3s ease;
 }
 
-nav.top ul li a {float:left;position:relative;z-index:-1;padding: 0px 20px; 
-  text-decoration:none; 
-  font-size:28px; 
+nav.top ul li a {float:left;position:relative;z-index:-1;padding: 0px 20px;
+  text-decoration:none;
+  font-size:28px;
   line-height:1.1;
   -webkit-transition:font-size 0.1s ease, color 0.15s ease;
   -moz-transition:font-size 0.1s ease, color 0.15s ease;
@@ -184,14 +184,14 @@ nav.top ul li a {float:left;position:relative;z-index:-1;padding: 0px 20px;
 }
 
 nav.top li ul {margin: 20px 0 0; position: absolute; width: 160px; z-index: 9999; visibility: hidden; }
-nav.top li:hover ul {visibility: visible; } 
-nav.top li ul a {margin-right: 0; padding-top:8px; font-size:14px; width: 120px; } 
+nav.top li:hover ul {visibility: visible; }
+nav.top li ul a {margin-right: 0; padding-top:8px; font-size:14px; width: 120px; }
 nav.top ul li a:hover,nav.top ul li:hover > a {z-index:1; text-shadow:4px 2px 1px white; font-size:46px;line-height:1;
-  -webkit-transition:font-size 0.5s ease, color 0.3s ease; 
-  -moz-transition:font-size 0.5s ease, color 0.3s ease; 
-  -ms-transition:font-size 0.5s ease, color 0.3s ease; 
-  -o-transition:font-size 0.5s ease, color 0.3s ease; 
-  transition:font-size 0.5s ease, color 0.3s ease; 
+  -webkit-transition:font-size 0.5s ease, color 0.3s ease;
+  -moz-transition:font-size 0.5s ease, color 0.3s ease;
+  -ms-transition:font-size 0.5s ease, color 0.3s ease;
+  -o-transition:font-size 0.5s ease, color 0.3s ease;
+  transition:font-size 0.5s ease, color 0.3s ease;
 }
 nav.top li ul a:hover, nav.top ul li li:hover > a  {}
 nav.top li:hover ul {left: auto; }
@@ -214,11 +214,11 @@ text-shadow:1px 1px 1px black;
 
 .html5-logo {float:left;height:38px;width:38px;overflow:hidden;margin-top:-10px;margin-left:20px;margin-bottom:1px;
 border-bottom:2px solid #d0d0d0;
--webkit-transition:all 0.7s cubic-bezier(.17,.67,1,.05); 
--moz-transition:all 0.7s cubic-bezier(.17,.67,1,.05); 
--ms-transition:all 0.7s cubic-bezier(.17,.67,1,.05); 
--o-transition:all 0.7s cubic-bezier(.17,.67,1,.05);  
-transition:all 0.7s cubic-bezier(.17,.67,1,.05); 
+-webkit-transition:all 0.7s cubic-bezier(.17,.67,1,.05);
+-moz-transition:all 0.7s cubic-bezier(.17,.67,1,.05);
+-ms-transition:all 0.7s cubic-bezier(.17,.67,1,.05);
+-o-transition:all 0.7s cubic-bezier(.17,.67,1,.05);
+transition:all 0.7s cubic-bezier(.17,.67,1,.05);
 }
 .html5-logo:hover {height:190px;margin-top:-150px;
   border-bottom:0px solid white;
@@ -227,21 +227,21 @@ transition:all 0.7s cubic-bezier(.17,.67,1,.05);
  -ms-box-shadow: inset 0px 0px 0px 0px white;
  -o-box-shadow: inset 0px 0px 0px 0px white;
  box-shadow: inset 0px 0px 0px 0px white;
-  -webkit-transition:all 0.6s ease; 
-  -moz-transition:all 0.6s ease; 
-  -ms-transition:all 0.6s ease; 
-  -o-transition:all 0.6s ease;  
-  transition:all 0.6s ease; 
+  -webkit-transition:all 0.6s ease;
+  -moz-transition:all 0.6s ease;
+  -ms-transition:all 0.6s ease;
+  -o-transition:all 0.6s ease;
+  transition:all 0.6s ease;
 }
 .html5-logo .img-container {
   width:38px;
   height:190px;
   opacity:0.4;
-  -webkit-transition:opacity 0.5s ease; 
-  -moz-transition:opacity 0.5s ease; 
-  -ms-transition:opacity 0.5s ease; 
-  -o-transition:opacity 0.5s ease;  
-  transition:opacity 0.5s ease; 
+  -webkit-transition:opacity 0.5s ease;
+  -moz-transition:opacity 0.5s ease;
+  -ms-transition:opacity 0.5s ease;
+  -o-transition:opacity 0.5s ease;
+  transition:opacity 0.5s ease;
 }
 .html5-logo .img-container:hover {
   opacity:1;
@@ -362,7 +362,7 @@ img.bubble_blur {
   /*needed for responsive design*/
 
 .social-holder {width:38px;height:36px;float:left;margin:-10px 0 0 10px;
-  border:2px solid rgba(127,127,127,0.4); 
+  border:2px solid rgba(127,127,127,0.4);
 }
 .sub-disp, .icon-wrap > div  {
   -webkit-transform: translateZ(0);
@@ -391,7 +391,7 @@ img.bubble_blur {
 
 .lev1 {top:0;}
 .lev2 {top:50%;}
-  .icon-wrap:hover div {opacity:0;} 
+  .icon-wrap:hover div {opacity:0;}
   .icon-wrap div:hover {opacity:1;}
 .social-wrap .icon-wrap div:hover {width:100%;left:0px;z-index:1;background-color:rgba(230,75,38,0.4);}
 .social-wrap .icon-wrap > div:hover > div {left:100%;overflow:hidden;}
@@ -517,7 +517,7 @@ p.cenlink {width:800px;height:200px;
   line-height:1.2;
   text-align:center;
 }
-p.cenlink a {color:#546d9c;text-decoration:none;  
+p.cenlink a {color:#546d9c;text-decoration:none;
   -webkit-transition:color 0.8s ease;
   -moz-transition:color 0.8s ease;
   -ms-transition:color 0.8s ease;
@@ -525,7 +525,7 @@ p.cenlink a {color:#546d9c;text-decoration:none;
   transition:color 0.8s ease;
 }
 
-p.cenlink a:hover {color:#1c90f2;  
+p.cenlink a:hover {color:#1c90f2;
 }
 
 p.cenlink em {letter-spacing:-2px;font-size:84px; color:#546d9c;
@@ -546,7 +546,7 @@ p span.ari {font-family:helvetica;color:#7399dd;margin-left:5px;margin-right:2px
   -o-transition:      text-shadow 0.2s ease, opacity 0.4s ease-out, color 0.2s ease-in;
   transition:         text-shadow 0.2s ease, opacity 0.4s ease-out, color 0.2s ease-in;
 }
-p span.ari:hover {color:#e17001;text-shadow:1px 1px 1px black;opacity:0.9;    
+p span.ari:hover {color:#e17001;text-shadow:1px 1px 1px black;opacity:0.9;
 }
 
 
@@ -568,7 +568,7 @@ p span.ari:hover {color:#e17001;text-shadow:1px 1px 1px black;opacity:0.9;
   }
   .ie9 footer {height:240px;}
   .ie9 nav.bottom {margin-top:200px;}
-  
+
 
   .ie9 .facebook .sub-disp .fb-like, .ie9  .facebook .sub-disp .fb-like:hover {
   width:68px;
@@ -604,10 +604,10 @@ p span.ari:hover {color:#e17001;text-shadow:1px 1px 1px black;opacity:0.9;
   div[role="main"] figure#logo-home  figcaption {font-size:8px;top:-35px;left:125px;}
   .ie9 div[role="main"] figure#logo-home  figcaption {left:118px;top:-37px;font-size:8px;}
   #canevas, canvas  {width:100%;height:100%;}
-  #fps {} 
-  #negPop p{margin-left:-50px;margin-top:-50px;width:100px;height:100px; font-size:20px; } 
+  #fps {}
+  #negPop p{margin-left:-50px;margin-top:-50px;width:100px;height:100px; font-size:20px; }
   #negPop p:after {border-left: 50px solid transparent;border-right: 50px solid transparent;border-top: 100px solid #FF513A;margin-left: -50px;margin-top: -50px;}
-  #negPop p:hover:after{border-left: 50px solid transparent; border-right: 50px solid transparent; border-top: 100px solid #ff5f3a; } 
+  #negPop p:hover:after{border-left: 50px solid transparent; border-right: 50px solid transparent; border-top: 100px solid #ff5f3a; }
   p.cenlink {font-size:20px;margin-top:8%;}
   p.cenlink em {font-size:24px;}
 }
@@ -634,10 +634,10 @@ p span.ari:hover {color:#e17001;text-shadow:1px 1px 1px black;opacity:0.9;
   div[role="main"] figure#logo-home  figcaption {font-size:10px;top:-50px;left:180px;}
   .ie9 div[role="main"] figure#logo-home  figcaption {left:170px;top:-55px;font-size:10px;}
   #canevas, canvas  {width:100%;height:100%;}
-  #fps {} 
-  #negPop p{margin-left:-100px;margin-top:-100px;width:200px;height:200px; font-size:40px; } 
-  #negPop p:after {border-left: 100px solid transparent; border-right: 100px solid transparent; border-top: 200px solid #FF513A; margin-left: -100px; margin-top: -100px; } 
-  #negPop p:hover:after{border-left: 100px solid transparent; border-right: 100px solid transparent; border-top: 200px solid #ff5f3a; } 
+  #fps {}
+  #negPop p{margin-left:-100px;margin-top:-100px;width:200px;height:200px; font-size:40px; }
+  #negPop p:after {border-left: 100px solid transparent; border-right: 100px solid transparent; border-top: 200px solid #FF513A; margin-left: -100px; margin-top: -100px; }
+  #negPop p:hover:after{border-left: 100px solid transparent; border-right: 100px solid transparent; border-top: 200px solid #ff5f3a; }
   p.cenlink {font-size:30px;margin-top:8%;}
   p.cenlink em {font-size:36px;}
 }
@@ -659,14 +659,14 @@ p span.ari:hover {color:#e17001;text-shadow:1px 1px 1px black;opacity:0.9;
 
   #logo-home {width:665px;height:222px; margin-left: -332px;margin-top: -111px;}
 
-  #negPop p{margin-left:-150px;margin-top:-150px;width:300px;height:300px; font-size:60px; } 
-  #negPop p:after {border-left: 150px solid transparent; border-right: 150px solid transparent; border-top: 300px solid #FF513A; margin-left: -150px; margin-top: -160px; } 
-  #negPop p:hover:after{border-left: 150px solid transparent; border-right: 150px solid transparent; border-top: 300px solid #ff5f3a; } 
- 
+  #negPop p{margin-left:-150px;margin-top:-150px;width:300px;height:300px; font-size:60px; }
+  #negPop p:after {border-left: 150px solid transparent; border-right: 150px solid transparent; border-top: 300px solid #FF513A; margin-left: -150px; margin-top: -160px; }
+  #negPop p:hover:after{border-left: 150px solid transparent; border-right: 150px solid transparent; border-top: 300px solid #ff5f3a; }
+
     /*specifics*/
   div[role="main"] figure#logo-home  figcaption {font-size:18px;top:-90px;left:320px;}
   .ie9 div[role="main"] figure#logo-home  figcaption {left:300px;top:-100px;font-size:18px;}
-  #canevas, canvas  {width:100%;height:100%;} 
+  #canevas, canvas  {width:100%;height:100%;}
   #fps {}
  p.cenlink {font-size:60px;}
   p.cenlink em {font-size:72px;}
@@ -675,14 +675,14 @@ p span.ari:hover {color:#e17001;text-shadow:1px 1px 1px black;opacity:0.9;
 
 @media screen and (min-width: 1001px) and (max-width: 1440px) {
   #canevas, canvas  {width:1440px;}
-  #canevas, canvas  {width:100%;height:100%;} 
+  #canevas, canvas  {width:100%;height:100%;}
   p.cenlink {font-size:70px;}
   p.cenlink em {font-size:80px;}
 }
 
 @media screen and (min-width: 1441px) and (max-width: 1920px) {
   #canevas, canvas  {width:1918px;}
-  #canevas, canvas  {width:100%;height:100%;} 
+  #canevas, canvas  {width:100%;height:100%;}
   p.cenlink {margin-top:25%;}
 }
 
@@ -704,7 +704,7 @@ p span.ari:hover {color:#e17001;text-shadow:1px 1px 1px black;opacity:0.9;
 /* =============================================================================
    Print Styles
    ========================================================================== */
- 
+
 @media print {
   * { background: transparent !important; color: black !important; box-shadow:none !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; } /* Black prints faster: h5bp.com/s */
   a, a:visited { text-decoration: underline; }
