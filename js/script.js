@@ -11,14 +11,14 @@
 .............?????,.......????...???????........................................
 ............????:........=???,...??????.........................................
 ...........=???:........,????....~????,.........................................
-...........????.........????.....,????.EGDEN..........www.negden.com............
+...........????.........????.....,????.NEGDEN..........www.negden.com...........
 ...........????........????,......,,,...........................................
 ...........????+.....,????,.....................................................
 ...........,??????:+?????:......................................................
 ............,???????????........................................................
 ..............,=?????,..........................................................
 .....................ALL RIGHTS RESERVED........Author:Jonathan Rivalan.......*/
-  
+
   //todo refactoriser en méthodes (init, replay)
   //todo add ghost option
   function BubbleLauncher(){
@@ -40,20 +40,35 @@
     var ctx = c0reCanvas.getContext('2d');
 
       // Variables de l'effet
-    var bNum = 49,
-        bMinSz = 4,
-        bMaxSz = 100, 
-        bMinSp = 0,
-        bMaxSp = 4,
+      // BENCH 28/07/2019 WQHD
+      // v1.0 15000 (2,5 ~ 3)
+      // v1.0 5000 (7,5 ~ 9)
+      // v1.0 2500 (14,5 ~ 18)
+      // v1.0 1250 (25,8 ~ 30)
+      // v1.0 1000 (25,8 ~ 40)
+      // v1.0 750 (26,6 ~ 45)
+      // v1.0 500 (31,5 ~ 50)
+      // v1.0 250 (34,3 ~ 60)
+      // v1.0 200 (33,4 ~ 60)
+      // v1.0 150 (35,1 ~ *)
+      // v1.0 100 (35,1 ~ *)
+      // v1.0 50 (35,5 ~ *)
+
+    var bNum = 50, //set bubbles number
+        bMinSz = 4, //set bubbles min size
+        bMaxSz = 100, //set bubbles max size
+        bMinSp = 0, //set bubbles min speed
+        bMaxSp = 4, // set bubbles max speed
         bColor = ["(69,208,253)","(0,150,255)","(19,119,212)","(81,146,213)"],
         b2ndColor = ["(255,168,0)",//orange
                     "(255,123,87)",//orouge
-                    "(255,198,0)",//or
-                    "(255,107,107)",//saumon
+                    "(255,198,0)",//gold
+                    "(255,107,107)",//salmon
                     "(255,87,123)"],//roge
         SpecialColor = "(255,0,78)", //#ce0f0f
         bDelay = 1500, //tps avant lancement
         bRender = "render";//methode de rendu, prend les valeurs "render" ou "prerender" (deprecated)
+
     //Mises en cache !!ne pas modifier
     var counter = 0, //quand atteind la valeur de bNum, arrête l'animation
         recounter = 0, //compte le nombre de relaunch
@@ -103,8 +118,8 @@
 
     //FPS COUNTER PART1
     var fS = 20,
-        fT = 0, 
-        lL = new Date, 
+        fT = 0,
+        lL = new Date,
         tL,
         fO = document.getElementById('fps');
 
@@ -138,7 +153,7 @@
                 reSpdOut = b.size*b.speed*8,
                 reRand = Rand0To(4)*b.speed,
                 bulOcolor = b.color,
-                bulPosX = (b.x - b.size),//!@! optimiser la partie collision 
+                bulPosX = (b.x - b.size),//!@! optimiser la partie collision
                 bulPosY = (b.y - b.size),
                 bulNegX = (b.x + b.size),
                 bulNegY = (b.y + b.size),
@@ -152,7 +167,7 @@
                 bulCorPY = (b.y + reStepCore);
 
              if (mX >= bulCorX && mX <= bulCorPX && mY >= bulCorY && mY <= bulCorPY)
-              {   
+              {
                   b.x = mX;
                   b.y = mY;
 
@@ -170,13 +185,13 @@
                     setTimeout(function(){
                       cursorTooltip.classList.remove('shine');
                     },200)
-                    
+
                   }
                   //si la bulle était déjà pinnée
                   else {}
 
               }
-    
+
               if (mX >= bulPosX2 && mX <= bulNegX2 && mY >= bulPosY2 && mY <= bulNegY2)
               {
                 if (b.color == b.color2nd) {}
@@ -190,13 +205,13 @@
                   b.y = mY-b.size*0.2;
                   b.size -= reSpdOut;
               }
-              else if (mX >= bulPosX && mX <= bulNegX && mY >= bulPosY && mY <= bulNegY)  
+              else if (mX >= bulPosX && mX <= bulNegX && mY >= bulPosY && mY <= bulNegY)
               {
                 b.size -= reSpdIn;
                 b.x -= reRand+reSpdOut;
                 b.y += reRand;
               }
-              else if (b.size !== b.Osize) 
+              else if (b.size !== b.Osize)
               {
                 b.cFnum[1] -= b.Step[1]*2;
                 b.cFnum[2] -= b.Step[2]*2;
@@ -218,7 +233,7 @@
                 }
 
               }
-              
+
           bulX = (b.dx - b.x) * b.speed;
           bulY = (b.dy - b.y) * b.speed;
 
@@ -257,7 +272,7 @@
     (function cursorGhostCreate(obj, blurobj){
       obj = cursor;
       blurobj = cursorBlur;
-      
+
       if (ghostActive == 0){
         ghostActive = 1;
         var objGhost = blurobj.cloneNode();
@@ -339,7 +354,7 @@
       b.color = bColor[triRand];
       //Attribue une couleur spéciale à la deuxième bulle
       if (num == 2 | num == 4){b.color = SpecialColor;}
-      
+
       b.color2nd = b2ndColor[colRand];
       b.ColStep = b.OColstep = b.color;
       b.ColDest = b.OColDest = b.color2nd;
@@ -348,7 +363,7 @@
       var colFrom=b.cFnum=b.OcFnum=b.ColStep.split(reg);
       var colDest=b.cDnum=b.OcDnum=b.ColDest.split(reg);
       b.Step = [1,1];
-      
+
       for (var i = 1; i <= colFrom.length-2; i++) {
         b.cFnum[i] = b.OcFnum[i] = parseFloat(colFrom[i]);
         b.cDnum[i] = b.OcDnum[i] = parseFloat(colDest[i]);
